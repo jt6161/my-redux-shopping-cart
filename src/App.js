@@ -6,10 +6,14 @@ import CartItems from './components/CartItems'
 import AddItem from './components/AddItem'
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">
-
+        <CartHeader />
+          <AddItem />
+          <CartItems />
+        <CartFooter />
       </div>
     );
   }

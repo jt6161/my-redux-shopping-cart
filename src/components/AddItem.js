@@ -5,7 +5,7 @@ class AddItem extends Component {
   constructor() {
     super()
     this.state = {
-      productId: 0,
+      productId: 40,
       quantity: 0,
     }
   }
@@ -21,7 +21,9 @@ class AddItem extends Component {
   render () {
     let listOfProducts = this.props.products.map(product => {
       return (
-        <option key={product.id} value={product.id}>{product.name}</option>
+        <option
+          key={product.id}
+          value={product.id}>{product.name}</option>
       )
     })
     return (
@@ -31,7 +33,6 @@ class AddItem extends Component {
         <Input
           s={6}
           label="Quantity"
-          value={this.state.quantity}
           onChange={(e) => this.setState({ quantity: e.target.value})}
         />
         <Input
@@ -39,7 +40,6 @@ class AddItem extends Component {
           type='select'
           label="Materialize Select"
           defaultValue='2'
-          value={this.state.productId}
           onChange={(e) => this.setState({ productId: e.target.value})}
         >
           {listOfProducts}
