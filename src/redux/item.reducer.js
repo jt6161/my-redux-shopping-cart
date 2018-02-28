@@ -1,9 +1,7 @@
-import { ADD_ITEM, FETCH_ITEMS_SUCCESS, FETCH_ITEMS_FAILED } from './item.action'
+import { FETCH_ITEMS_SUCCESS, FETCH_ITEMS_FAILED } from './item.action'
 
-let initialState = []
 
-export default (state = initialState, action) => {
-
+export default (state = [], action) => {
   switch (action.type) {
     case ADD_ITEM:
       return [...state, action.payload]

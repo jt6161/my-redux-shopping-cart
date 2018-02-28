@@ -3,12 +3,13 @@ export const FETCH_ITEMS_SUCCESS = 'FETCH_ITEMS_SUCCESS'
 export const FETCH_ITEMS_FAILED = 'FETCH_ITEMS_FAILED'
 
 export const addItem = (newItem) => {
-  console.log('add item action', newItem)
-  return (dispatch) => {
-    dispatch({
-      type: ADD_ITEM,
-      payload: newItem
-    })
+console.log('add item action', newItem)
+  return async (dispatch) => {
+    try {
+      let response = await fetch(`http://localhost:8082/api/items`)    
+    } catch(error) {
+
+  }
   }
 }
 
