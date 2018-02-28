@@ -1,4 +1,4 @@
-import { ADD_ITEM, FETCH_ITEMS_SUCCESS, FETCH_ITEMS_FAILED } from './item.actions'
+import { ADD_ITEM, FETCH_ITEMS_SUCCESS, FETCH_ITEMS_FAILED } from './item.action'
 
 let initialState = []
 

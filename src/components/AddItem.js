@@ -1,31 +1,24 @@
 import React, { Component } from 'react'
+import { addItem } from './redux/item.action'
 import { Row, Input, Button } from 'react-materialize'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
 
 class AddItem extends Component {
-  constructor() {
-    super()
-    this.state = {
-      productId: 40,
-      quantity: 0,
-    }
+  state = {
+    newItem: ''
   }
 
-  handleClick = () => {
-    let theProduct = this.props.products.filter(product => product.id === this.state.productId)[0]
-    this.props.addItemFunc({
-      product: theProduct,
-      quantity: this.state.quantity
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.props.addItem({
+      id: this.props.newId,
+      name: this.state.newName
     })
   }
 
   render () {
-    let listOfProducts = this.props.products.map(product => {
-      return (
-        <option
-          key={product.id}
-          value={product.id}>{product.name}</option>
-      )
-    })
     return (
       <div className='container'>
       <Row>
@@ -42,11 +35,11 @@ class AddItem extends Component {
           defaultValue='2'
           onChange={(e) => this.setState({ productId: e.target.value})}
         >
-          {listOfProducts}
+
         </Input>
         <Button
           waves='light'
-          onClick={this.handleClick}
+          onClick={this.handleSubmit}
         >Submit</Button>
       </Row>
       </div>
@@ -54,4 +47,16 @@ class AddItem extends Component {
   }
 }
 
-export default AddItem
+function mapDispatchToProps(dispatch) {
+  return {
+    addItem: bindActionCreators(addItem, dispatch)
+  }
+}
+function mapStateToProps(state) {
+  console.log(state.items.length)
+  return {
+    newId: state.items.length = 1
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddItem)
