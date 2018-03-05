@@ -1,9 +1,10 @@
 {
-  "name": "my-cart-2",
+  "name": "my-redux-shopping-cart",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "materialize-css": "^0.100.2",
+    "npm": "^5.7.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-materialize": "^1.1.2",

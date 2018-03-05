@@ -2,28 +2,16 @@ import React from 'react'
 import CartItem from './CartItem'
 import { connect } from 'react-redux'
 
-<<<<<<< HEAD
+
 const CartItems = (props)=> {
   if(props.products[1]) {
     let populatedItems = props.items.map(item => {
-      item.product = props.products.filter(product => item.product_id == product.id)[0]
+      item.product = props.products.filter(product => item.product_id === product.id)[0]
       return item
     })
     console.log('pop', populatedItems)
   }
-  let bigList = props.items.map(item => <CartItem key={item.id} item={item} />)git 
-=======
-const CartItems = (props) => {
-  if(props.products[1]) {
-    let populatedItems = props.items.map(item => {
-      item.product = props.products.filter(product => item.product_id == product.id[0])
-      return item
-    })
-    console.log('pop', populatedItems);
-  }
-
-  let listOfCartItems = props.items.map(item => <CartItem key={item.id} item={item} />)
->>>>>>> 4729afaca9044551b711950713ac9c937907f70b
+  let bigList = props.items.map(item => <CartItem key={item.id} item={item} />)
   return (
     <div className="container">
       <h1>Items</h1>
@@ -44,8 +32,4 @@ const mapStateToProps = state => ({
   items: state.items
 })
 
-<<<<<<< HEAD
 export default connect(mapStateToProps, null)(CartItems);
-=======
-export default connect(mapStateToProps, null)(CartItems)
->>>>>>> 4729afaca9044551b711950713ac9c937907f70b

@@ -10,4 +10,4 @@ const CartItem = ({item}) => (
     </div>
   )
 
-export default CartItem
+export default CartItem;
