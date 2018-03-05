@@ -32,4 +32,4 @@ const mapStateToProps = state => ({
   items: state.items
 })
 
-export default connect(mapStateToProps, null)(CartItems);
+export default connect(mapStateToProps, null)(CartItems)
