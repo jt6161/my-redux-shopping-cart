@@ -10,7 +10,7 @@ const CartItems = (props)=> {
     })
     console.log('pop', populatedItems)
   }
-  let bigList = props.items.map(item => <CartItem key={item.id} item={item} />)
+  let bigList = props.items.map(item => <CartItem key={item.id} item={item} />)git 
   return (
     <div className="container">
       <h1>Items</h1>
