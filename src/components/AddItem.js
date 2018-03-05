@@ -1,62 +1,64 @@
 import React, { Component } from 'react'
-import { addItem } from './redux/item.action'
-import { Row, Input, Button } from 'react-materialize'
+import { Container, Row, Input, Button } from 'react-materialize'
 import { connect } from 'react-redux'
+import { addItem } from '../redux/actions/items'
 import { bindActionCreators } from 'redux'
 
 
 class AddItem extends Component {
-  state = {
-    newItem: ''
+  constructor() {
+    super()
+    this.state = {
+      productId: 1,
+      quantity: 0
+    }
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault()
-    this.props.addItem({
-      id: this.props.newId,
-      name: this.state.newName
-    })
-  }
+handleClick = () => {
+  this.props.addItem(this.state)
+}
 
   render () {
+    console.log('props in additem', this.props)
+    let listOfProducts = this.props.products.map(product => {
+      return (
+        <option key={product.id} value={product.id}>{product.name}</option>
+      )
+    })
     return (
-      <div className='container'>
+      <Container>
       <Row>
         <h2>Add Item</h2>
         <Input
-          s={6}
+          s={12}
           label="Quantity"
           onChange={(e) => this.setState({ quantity: e.target.value})}
         />
         <Input
-          s={6}
+          s={12}
           type='select'
-          label="Materialize Select"
-          defaultValue='2'
+          label="Choose a product"
           onChange={(e) => this.setState({ productId: e.target.value})}
         >
-
+          {listOfProducts}
         </Input>
         <Button
           waves='light'
-          onClick={this.handleSubmit}
+          onClick={this.handleClick}
         >Submit</Button>
       </Row>
-      </div>
+      </Container>
     )
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    addItem: bindActionCreators(addItem, dispatch)
-  }
-}
-function mapStateToProps(state) {
-  console.log(state.items.length)
-  return {
-    newId: state.items.length = 1
-  }
-}
+const mapStateToProps = state => ({
+  products: state.products
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  addItem
+}, dispatch)
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddItem)

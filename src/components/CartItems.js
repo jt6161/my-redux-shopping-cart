@@ -1,16 +1,16 @@
 import React from 'react'
 import CartItem from './CartItem'
+import { connect } from 'react-redux'
 
-const CartItems = (props) => {
-  let listOfCartItems = props.items.map(item => {
-    return (
-      <CartItem key={item.id} item={item} />
-    )
-  })
-  let itemsTotal = props.items.reduce((acc, currVal) => {
-    return acc + (currVal.quantity * (currVal.product.priceInCents/100))
-  }, 0)
-  console.log('total', itemsTotal)
+const CartItems = (props)=> {
+  if(props.products[1]) {
+    let populatedItems = props.items.map(item => {
+      item.product = props.products.filter(product => item.product_id == product.id)[0]
+      return item
+    })
+    console.log('pop', populatedItems)
+  }
+  let bigList = props.items.map(item => <CartItem key={item.id} item={item} />)
   return (
     <div className="container">
       <h1>Items</h1>
@@ -20,11 +20,15 @@ const CartItems = (props) => {
           <div className="col s2">Price</div>
           <div className="col s2">Quantity</div>
         </div>
-        {listOfCartItems}
+          {bigList}
       </div>
-      <p>Total: {itemsTotal}</p>
     </div>
   )
 }
 
-export default CartItems
+const mapStateToProps = state => ({
+  products: state.products,
+  items: state.items
+})
+
+export default connect(mapStateToProps, null)(CartItems);

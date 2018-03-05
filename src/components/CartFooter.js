@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const CartFooter = (props) => {
   return (
   <footer className="page-footer">
@@ -13,7 +12,7 @@ const CartFooter = (props) => {
     </div>
     <div className="footer-copyright">
       <div className="container">
-        &copy; {props.copyright}
+        &copy; 2018
       </div>
     </div>
   </footer>
